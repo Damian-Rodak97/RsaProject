@@ -31,9 +31,11 @@ public class Uzytkownik1 {
         N = p.multiply(q);
         Z = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
         E = new BigInteger("4");
+        
         while (BigInteger.valueOf(znajdzNWD(Z.intValue(), E.intValue())).intValue() > 1) {
             E = E.add(new BigInteger("1"));
         }
+        
         D = BigInteger.valueOf(modularMultiplicativeInverse(E, Z));
         
         if (D.equals(E)) {
