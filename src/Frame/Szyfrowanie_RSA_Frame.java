@@ -9,8 +9,6 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     public Szyfrowanie_RSA_Frame() {
         initComponents();
         this.setLocationRelativeTo(null);
-        Uzytkownik1.generate();
-        Uzytkownik2.generate();
     }
 
     /**

@@ -1,7 +1,21 @@
 package Frame;
 
+import static Frame.Aplikacja2.Deszyfrowanie;
+import static Frame.Aplikacja2.Szyfrowanie;
+import static Frame.Aplikacja2.sitoEratostenesa;
+import static Frame.Aplikacja2.wyznacz_d;
+import static Frame.Aplikacja2.wyznacz_e;
 import javax.swing.JOptionPane;
 import Frame.Choice;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
@@ -40,10 +54,8 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1180, 690));
         setMinimumSize(new java.awt.Dimension(1180, 690));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1180, 690));
         setSize(new java.awt.Dimension(1180, 690));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -97,6 +109,11 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         Tekst_zaszyfrowany.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         Tekst_zaszyfrowany.setForeground(new java.awt.Color(255, 255, 255));
         Tekst_zaszyfrowany.setBorder(null);
+        Tekst_zaszyfrowany.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Tekst_zaszyfrowanyActionPerformed(evt);
+            }
+        });
         jPanel1.add(Tekst_zaszyfrowany, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 450, 40));
 
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
@@ -204,7 +221,9 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Odszyfruj_tekstMouseClicked
 
     private void Odszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Odszyfruj_tekstActionPerformed
-        // TODO add your handling code here:
+        String tekst = Tekst_zaszyfrowany.getText();
+        tekst = Aplikacja2.Szyfrowanie(tekst, 143, 103);
+        Tekst_odszyfrowany.setText(tekst);
     }//GEN-LAST:event_Odszyfruj_tekstActionPerformed
 
     private void Klucz_deszyfrowanieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Klucz_deszyfrowanieMouseClicked
@@ -212,7 +231,28 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Klucz_deszyfrowanieMouseClicked
 
     private void Klucz_deszyfrowanieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Klucz_deszyfrowanieActionPerformed
-        // TODO add your handling code here:
+    int p = Integer.parseInt(Podaj_p.getText());
+    int q = Integer.parseInt(Podaj_q.getText());
+    int n= p*q;
+    int phi = (p-1) * (q -1);
+    int e = wyznacz_e(phi,n);
+    int d = wyznacz_d(e,phi);
+    String Key_Private = n + " " + d ;
+    String Key_Public = n + " " + e ;
+        try {
+            PrintWriter zapis = new PrintWriter("D:/files/KluczJawny.txt");
+            zapis.println(Key_Public);
+        zapis.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            PrintWriter zapis2 = new PrintWriter("D:/files/KluczPrywatny.txt");
+            zapis2.println(Key_Private);
+        zapis2.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_Klucz_deszyfrowanieActionPerformed
 
     private void Wczytaj_plik1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Wczytaj_plik1MouseClicked
@@ -220,7 +260,17 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Wczytaj_plik1MouseClicked
 
     private void Wczytaj_plik1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wczytaj_plik1ActionPerformed
-        // TODO add your handling code here:
+           String tekst ="";
+         File file1 = new File("D:/files/elo.txt");
+         Scanner in1 = null;
+        try {
+            in1 = new Scanner(file1);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         tekst = in1.nextLine();
+         String zaszyfrowany = tekst;
+         Tekst_zaszyfrowany.setText(zaszyfrowany);
     }//GEN-LAST:event_Wczytaj_plik1ActionPerformed
 
     private void Powrot_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Powrot_menuMouseClicked
@@ -229,15 +279,15 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Powrot_menuMouseClicked
 
+    private void Tekst_zaszyfrowanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tekst_zaszyfrowanyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tekst_zaszyfrowanyActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
