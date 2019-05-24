@@ -38,7 +38,6 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         Label1 = new javax.swing.JLabel();
         Wprowadz_tekst = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        Wczytaj_klucz = new javax.swing.JButton();
         Send_File = new javax.swing.JButton();
         Zaszyfruj_tekst = new javax.swing.JButton();
         Powrot_menu = new javax.swing.JButton();
@@ -106,20 +105,6 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 450, -1));
 
-        Wczytaj_klucz.setText("Wczytaj klucz");
-        Wczytaj_klucz.setBorder(null);
-        Wczytaj_klucz.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Wczytaj_kluczMouseClicked(evt);
-            }
-        });
-        Wczytaj_klucz.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Wczytaj_kluczActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Wczytaj_klucz, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 160, 20));
-
         Send_File.setText("Zapisz do pliku");
         Send_File.setBorder(null);
         Send_File.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,7 +131,7 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Zaszyfruj_tekstActionPerformed(evt);
             }
         });
-        jPanel1.add(Zaszyfruj_tekst, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 160, 20));
+        jPanel1.add(Zaszyfruj_tekst, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 160, 20));
 
         Powrot_menu.setText("Wróć");
         Powrot_menu.setBorder(null);
@@ -181,10 +166,6 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         this.setState(Login.ICONIFIED);
     }//GEN-LAST:event_Icon_minimizeMouseClicked
 
-    private void Wczytaj_kluczMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Wczytaj_kluczMouseClicked
-        //TODO add your handling code here:
-    }//GEN-LAST:event_Wczytaj_kluczMouseClicked
-
     private void Send_FileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Send_FileMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_Send_FileMouseClicked
@@ -192,10 +173,6 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private void Zaszyfruj_tekstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_Zaszyfruj_tekstMouseClicked
-
-    private void Wczytaj_kluczActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wczytaj_kluczActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Wczytaj_kluczActionPerformed
 
     private void Powrot_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Powrot_menuMouseClicked
         Choice powrot = new Choice();
@@ -277,7 +254,6 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private javax.swing.JButton Send_File;
     private javax.swing.JLabel SzyfrowanieRSA_title;
     private javax.swing.JTextField Tekst_zaszyfrowany;
-    private javax.swing.JButton Wczytaj_klucz;
     private javax.swing.JTextField Wprowadz_tekst;
     private javax.swing.JButton Zaszyfruj_tekst;
     private javax.swing.JPanel jPanel1;
