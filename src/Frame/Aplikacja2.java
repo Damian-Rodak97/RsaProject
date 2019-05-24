@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Random;
  
 public class Aplikacja2 {
- public static String Odszyfrowany = "XD";
     
 public static boolean CzyPierwsza(int liczba)
 {
@@ -51,20 +50,8 @@ public static int wyznacz_d(int e, int phi)
         for (int i = 0 ; i < tekst.length(); i++) slownik[i]+=(int)tekst.charAt(i);
         return slownik;
 }
-     
-    public static String Szyfrowanie(String tekst,int n,int e)
-{
-    int [] liczby = ZamianaNaAscii(tekst);
-    String ZaszyfrowanyTekst = "";
-    for(int i =0; i < tekst.length();i++)
-    {
-    ZaszyfrowanyTekst += (char)(Math.pow(liczby[i], e)%n);
-    }
-    return ZaszyfrowanyTekst;
-}
 
-
-public static String  Deszyfrowanie(String tekst,int n,int d)
+  public static String  Deszyfrowanie(String tekst,int n,int d)
 {
   int [] liczby = ZamianaNaAscii(tekst);
   int [] tab = new int [tekst.length()];

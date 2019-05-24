@@ -1,7 +1,6 @@
 package Frame;
 
 import static Frame.Aplikacja2.Deszyfrowanie;
-import static Frame.Aplikacja2.Szyfrowanie;
 import static Frame.Aplikacja2.sitoEratostenesa;
 import static Frame.Aplikacja2.wyznacz_d;
 import static Frame.Aplikacja2.wyznacz_e;
@@ -241,7 +240,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
          keyprivate = in1.nextLine();
         List<String> kluczPrivate = Arrays.asList(keyprivate.split(" "));
         List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        tekst = Aplikacja2.Szyfrowanie(tekst,intKluczPrivate.get(0),intKluczPrivate.get(1));
+        tekst = Aplikacja2.Deszyfrowanie(tekst,intKluczPrivate.get(0),intKluczPrivate.get(1));
         Tekst_odszyfrowany.setText(tekst);
     }//GEN-LAST:event_Odszyfruj_tekstActionPerformed
 

@@ -3,6 +3,15 @@ package Frame;
 import javax.swing.JOptionPane;
 import java.math.BigInteger;
 import Frame.Choice;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
@@ -37,7 +46,6 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setMaximumSize(new java.awt.Dimension(1180, 690));
         setMinimumSize(new java.awt.Dimension(1180, 690));
         setUndecorated(true);
         setSize(new java.awt.Dimension(1180, 690));
@@ -119,6 +127,11 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Send_FileMouseClicked(evt);
             }
         });
+        Send_File.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Send_FileActionPerformed(evt);
+            }
+        });
         jPanel1.add(Send_File, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 170, 30));
 
         Zaszyfruj_tekst.setText("Zaszyfruj");
@@ -126,6 +139,11 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         Zaszyfruj_tekst.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Zaszyfruj_tekstMouseClicked(evt);
+            }
+        });
+        Zaszyfruj_tekst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Zaszyfruj_tekstActionPerformed(evt);
             }
         });
         jPanel1.add(Zaszyfruj_tekst, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 160, 20));
@@ -184,6 +202,35 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         powrot.setVisible(true);
         dispose();
     }//GEN-LAST:event_Powrot_menuMouseClicked
+
+    private void Zaszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstActionPerformed
+       String tekst = Wprowadz_tekst.getText();
+            String keypublic ="";
+         File file1 = new File("D:/files/KluczJawny.txt");
+         Scanner in1 = null;
+        try {
+            in1 = new Scanner(file1);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         keypublic = in1.nextLine();
+        List<String> kluczPrivate = Arrays.asList(keypublic.split(" "));
+        List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+        tekst = Aplikacja1.Szyfrowanie(tekst,intKluczPrivate.get(0),intKluczPrivate.get(1));
+        Tekst_zaszyfrowany.setText(tekst);
+       
+    }//GEN-LAST:event_Zaszyfruj_tekstActionPerformed
+
+    private void Send_FileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Send_FileActionPerformed
+        try {
+            PrintWriter zapis = new PrintWriter("D:/files/Zaszyfrowany.txt");
+            zapis.println(Tekst_zaszyfrowany.getText());
+        zapis.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            JOptionPane.showMessageDialog(this, "Szyfrowanie zostalo zapisane do pliku !");
+    }//GEN-LAST:event_Send_FileActionPerformed
 
     /**
      * @param args the command line arguments
