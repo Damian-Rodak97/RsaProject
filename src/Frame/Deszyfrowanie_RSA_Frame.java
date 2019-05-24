@@ -12,10 +12,13 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
@@ -136,6 +139,11 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 SaveMouseClicked(evt);
             }
         });
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
         jPanel1.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 170, 30));
 
         Odszyfruj_tekst.setText("Odszyfruj");
@@ -222,7 +230,18 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
     private void Odszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Odszyfruj_tekstActionPerformed
         String tekst = Tekst_zaszyfrowany.getText();
-        tekst = Aplikacja2.Szyfrowanie(tekst, 143, 103);
+           String keyprivate ="";
+         File file1 = new File("D:/files/KluczPrywatny.txt");
+         Scanner in1 = null;
+        try {
+            in1 = new Scanner(file1);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         keyprivate = in1.nextLine();
+        List<String> kluczPrivate = Arrays.asList(keyprivate.split(" "));
+        List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+        tekst = Aplikacja2.Szyfrowanie(tekst,intKluczPrivate.get(0),intKluczPrivate.get(1));
         Tekst_odszyfrowany.setText(tekst);
     }//GEN-LAST:event_Odszyfruj_tekstActionPerformed
 
@@ -253,6 +272,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
+        JOptionPane.showMessageDialog(this, "Klucze zostały wygenerowane !");
     }//GEN-LAST:event_Klucz_deszyfrowanieActionPerformed
 
     private void Wczytaj_plik1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Wczytaj_plik1MouseClicked
@@ -261,7 +281,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
     private void Wczytaj_plik1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wczytaj_plik1ActionPerformed
            String tekst ="";
-         File file1 = new File("D:/files/elo.txt");
+         File file1 = new File("D:/files/Zaszyfrowany.txt");
          Scanner in1 = null;
         try {
             in1 = new Scanner(file1);
@@ -271,6 +291,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
          tekst = in1.nextLine();
          String zaszyfrowany = tekst;
          Tekst_zaszyfrowany.setText(zaszyfrowany);
+         JOptionPane.showMessageDialog(this, "Plik wczytany !");
     }//GEN-LAST:event_Wczytaj_plik1ActionPerformed
 
     private void Powrot_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Powrot_menuMouseClicked
@@ -282,6 +303,17 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private void Tekst_zaszyfrowanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tekst_zaszyfrowanyActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Tekst_zaszyfrowanyActionPerformed
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+           try {
+            PrintWriter zapis = new PrintWriter("D:/files/Odszyfrowany.txt");
+            zapis.println(Tekst_odszyfrowany.getText());
+        zapis.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            JOptionPane.showMessageDialog(this, "Deszyfrowanie zostalo zapisane do pliku !");
+    }//GEN-LAST:event_SaveActionPerformed
 
     /**
      * @param args the command line arguments
