@@ -22,11 +22,11 @@ public class Choice extends javax.swing.JFrame {
 
         Icon_minimize1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        Icon_exit = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         Szyfrowanie = new javax.swing.JButton();
         Deszyfrowanie = new javax.swing.JButton();
+        Icon_exit = new javax.swing.JLabel();
         Icon_minimize = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -41,24 +41,12 @@ public class Choice extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(557, 592));
         setUndecorated(true);
         setSize(new java.awt.Dimension(557, 592));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(27, 26, 26));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Icon_exit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Icon_exit.setForeground(new java.awt.Color(255, 255, 255));
-        Icon_exit.setText("X");
-        Icon_exit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Icon_exit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Icon_exitMouseClicked(evt);
-            }
-        });
-        jPanel1.add(Icon_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 0, 20, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -89,6 +77,17 @@ public class Choice extends javax.swing.JFrame {
         });
         jPanel1.add(Deszyfrowanie, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 226, 252, 37));
 
+        Icon_exit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Icon_exit.setForeground(new java.awt.Color(255, 255, 255));
+        Icon_exit.setText("X");
+        Icon_exit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Icon_exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Icon_exitMouseClicked(evt);
+            }
+        });
+        jPanel1.add(Icon_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 7, 10, 20));
+
         Icon_minimize.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Icon_minimize.setForeground(new java.awt.Color(255, 255, 255));
         Icon_minimize.setText("-");
@@ -98,7 +97,7 @@ public class Choice extends javax.swing.JFrame {
                 Icon_minimizeMouseClicked(evt);
             }
         });
-        jPanel1.add(Icon_minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 20, 30));
+        jPanel1.add(Icon_minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 10, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 340, 370));
 
@@ -115,18 +114,6 @@ public class Choice extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DeszyfrowanieActionPerformed
 
-    private void Icon_exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Icon_exitMouseClicked
-        int dialogButton = JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Exit", dialogButton);
-        if (result == 0) {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_Icon_exitMouseClicked
-
-    private void Icon_minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Icon_minimizeMouseClicked
-        this.setState(Login.ICONIFIED);
-    }//GEN-LAST:event_Icon_minimizeMouseClicked
-
     private void Icon_minimize1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Icon_minimize1MouseClicked
         this.setState(Login.ICONIFIED);
     }//GEN-LAST:event_Icon_minimize1MouseClicked
@@ -142,6 +129,18 @@ public class Choice extends javax.swing.JFrame {
         deszyfrowanieRSA.setVisible(true);
         dispose();
     }//GEN-LAST:event_DeszyfrowanieMouseClicked
+
+    private void Icon_exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Icon_exitMouseClicked
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Exit", dialogButton);
+        if (result == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_Icon_exitMouseClicked
+
+    private void Icon_minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Icon_minimizeMouseClicked
+        this.setState(Login.ICONIFIED);
+    }//GEN-LAST:event_Icon_minimizeMouseClicked
 
     /**
      * @param args the command line arguments
