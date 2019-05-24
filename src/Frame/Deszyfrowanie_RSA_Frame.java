@@ -249,8 +249,9 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Klucz_deszyfrowanieMouseClicked
 
     private void Klucz_deszyfrowanieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Klucz_deszyfrowanieActionPerformed
-    int p = Integer.parseInt(Podaj_p.getText());
     int q = Integer.parseInt(Podaj_q.getText());
+    int p = Integer.parseInt(Podaj_p.getText());
+    if(Aplikacja2.CzyPierwsza(p) == true && Aplikacja2.CzyPierwsza(q)){
     int n= p*q;
     int phi = (p-1) * (q -1);
     int e = wyznacz_e(phi,n);
@@ -260,18 +261,23 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         try {
             PrintWriter zapis = new PrintWriter("D:/files/KluczJawny.txt");
             zapis.println(Key_Public);
-        zapis.close();
+            zapis.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             PrintWriter zapis2 = new PrintWriter("D:/files/KluczPrywatny.txt");
             zapis2.println(Key_Private);
-        zapis2.close();
+            zapis2.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
         JOptionPane.showMessageDialog(this, "Klucze zostały wygenerowane !");
+        }
+    else
+    {
+          JOptionPane.showMessageDialog(this, "Liczby nie są pierwsze !");
+    }
     }//GEN-LAST:event_Klucz_deszyfrowanieActionPerformed
 
     private void Wczytaj_plik1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Wczytaj_plik1MouseClicked
