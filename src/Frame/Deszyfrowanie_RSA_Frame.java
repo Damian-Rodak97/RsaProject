@@ -229,6 +229,12 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
     private void Odszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Odszyfruj_tekstActionPerformed
          String tekst = Tekst_zaszyfrowany.getText();
+         List<String> odszyfrowanyTekst = Arrays.asList(tekst.split(";"));
+         List<String> nazwy = new ArrayList();
+         int indexer = 0; 
+         nazwy.add("Imie: ");
+         nazwy.add("Nazwisko: ");
+         nazwy.add("Data urodzenia: ");
          String keyprivate ="";
          File file1 = new File("D:/files/KluczPrywatny.txt");
          Scanner in1 = null;
@@ -240,8 +246,12 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
          keyprivate = in1.nextLine();
         List<String> kluczPrivate = Arrays.asList(keyprivate.split(" "));
         List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        tekst = Aplikacja2.Deszyfrowanie(tekst,intKluczPrivate.get(0),intKluczPrivate.get(1));
-        
+        tekst = "";
+        for(String x:odszyfrowanyTekst)
+        {
+            tekst += " " + nazwy.get(indexer) + Aplikacja2.Deszyfrowanie(x,intKluczPrivate.get(0),intKluczPrivate.get(1));
+            indexer++;
+        }
         Tekst_odszyfrowany.setText(tekst);
     }//GEN-LAST:event_Odszyfruj_tekstActionPerformed
 
@@ -296,9 +306,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
             Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
          tekst = odczyt.nextLine();
-        List<String> odszyfrowanyTekst = Arrays.asList(tekst.split(";"));
-        tekst ="";
-        for(String x:odszyfrowanyTekst)tekst+=x;
+       
     
          String zaszyfrowany = tekst;
          Tekst_zaszyfrowany.setText(zaszyfrowany);
