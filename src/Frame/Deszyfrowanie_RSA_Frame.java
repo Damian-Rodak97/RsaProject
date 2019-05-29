@@ -228,8 +228,8 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Odszyfruj_tekstMouseClicked
 
     private void Odszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Odszyfruj_tekstActionPerformed
-        String tekst = Tekst_zaszyfrowany.getText();
-           String keyprivate ="";
+         String tekst = Tekst_zaszyfrowany.getText();
+         String keyprivate ="";
          File file1 = new File("D:/files/KluczPrywatny.txt");
          Scanner in1 = null;
         try {
@@ -241,6 +241,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         List<String> kluczPrivate = Arrays.asList(keyprivate.split(" "));
         List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
         tekst = Aplikacja2.Deszyfrowanie(tekst,intKluczPrivate.get(0),intKluczPrivate.get(1));
+        
         Tekst_odszyfrowany.setText(tekst);
     }//GEN-LAST:event_Odszyfruj_tekstActionPerformed
 
@@ -285,15 +286,20 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Wczytaj_plik1MouseClicked
 
     private void Wczytaj_plik1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wczytaj_plik1ActionPerformed
-           String tekst ="";
+             
+        String tekst ="";
          File file1 = new File("D:/files/Zaszyfrowany.txt");
-         Scanner in1 = null;
+         Scanner odczyt = null;
         try {
-            in1 = new Scanner(file1);
+            odczyt = new Scanner(file1);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
-         tekst = in1.nextLine();
+         tekst = odczyt.nextLine();
+        List<String> odszyfrowanyTekst = Arrays.asList(tekst.split(";"));
+        tekst ="";
+        for(String x:odszyfrowanyTekst)tekst+=x;
+    
          String zaszyfrowany = tekst;
          Tekst_zaszyfrowany.setText(zaszyfrowany);
          JOptionPane.showMessageDialog(this, "Plik wczytany !");
