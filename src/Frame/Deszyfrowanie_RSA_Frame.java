@@ -41,8 +41,8 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         DeszyfrowanieRSA_title = new javax.swing.JLabel();
         Tekst_odszyfrowany = new javax.swing.JTextField();
         Label2 = new javax.swing.JLabel();
-        Label1 = new javax.swing.JLabel();
-        Tekst_zaszyfrowany = new javax.swing.JTextField();
+        data_urodzenia = new javax.swing.JLabel();
+        Wyswietl_date_ur = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         Podaj_q = new javax.swing.JTextField();
         q = new javax.swing.JLabel();
@@ -53,6 +53,10 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         Klucz_deszyfrowanie = new javax.swing.JButton();
         Wczytaj_plik1 = new javax.swing.JButton();
         Powrot_menu = new javax.swing.JButton();
+        Wyswietl_imie = new javax.swing.JTextField();
+        Wyswietl_nazwisko = new javax.swing.JTextField();
+        imie = new javax.swing.JLabel();
+        nazwisko = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -95,31 +99,31 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         Tekst_odszyfrowany.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         Tekst_odszyfrowany.setForeground(new java.awt.Color(255, 255, 255));
         Tekst_odszyfrowany.setBorder(null);
-        jPanel1.add(Tekst_odszyfrowany, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 450, 40));
+        jPanel1.add(Tekst_odszyfrowany, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 430, 50));
 
         Label2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         Label2.setForeground(new java.awt.Color(255, 255, 255));
         Label2.setText("Tekst odszyfrowany:");
-        jPanel1.add(Label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 110, -1));
+        jPanel1.add(Label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 110, -1));
 
-        Label1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        Label1.setForeground(new java.awt.Color(255, 255, 255));
-        Label1.setText("Tekst zaszyfrowany:");
-        jPanel1.add(Label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 110, -1));
+        data_urodzenia.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        data_urodzenia.setForeground(new java.awt.Color(255, 255, 255));
+        data_urodzenia.setText("Data urodzenia:");
+        jPanel1.add(data_urodzenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 110, -1));
 
-        Tekst_zaszyfrowany.setBackground(new java.awt.Color(16, 16, 16));
-        Tekst_zaszyfrowany.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        Tekst_zaszyfrowany.setForeground(new java.awt.Color(255, 255, 255));
-        Tekst_zaszyfrowany.setBorder(null);
-        Tekst_zaszyfrowany.addActionListener(new java.awt.event.ActionListener() {
+        Wyswietl_date_ur.setBackground(new java.awt.Color(16, 16, 16));
+        Wyswietl_date_ur.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Wyswietl_date_ur.setForeground(new java.awt.Color(255, 255, 255));
+        Wyswietl_date_ur.setBorder(null);
+        Wyswietl_date_ur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Tekst_zaszyfrowanyActionPerformed(evt);
+                Wyswietl_date_urActionPerformed(evt);
             }
         });
-        jPanel1.add(Tekst_zaszyfrowany, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 450, 40));
+        jPanel1.add(Wyswietl_date_ur, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 130, 40));
 
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 450, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 590, 10));
         jPanel1.add(Podaj_q, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, 60, 30));
 
         q.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,7 +147,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 SaveActionPerformed(evt);
             }
         });
-        jPanel1.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 330, 170, 30));
+        jPanel1.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, 170, 30));
 
         Odszyfruj_tekst.setText("Odszyfruj");
         Odszyfruj_tekst.setBorder(null);
@@ -157,7 +161,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Odszyfruj_tekstActionPerformed(evt);
             }
         });
-        jPanel1.add(Odszyfruj_tekst, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 250, 160, 20));
+        jPanel1.add(Odszyfruj_tekst, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 140, 30));
 
         Klucz_deszyfrowanie.setText("Generuj klucz");
         Klucz_deszyfrowanie.setBorder(null);
@@ -171,7 +175,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Klucz_deszyfrowanieActionPerformed(evt);
             }
         });
-        jPanel1.add(Klucz_deszyfrowanie, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 80, 30));
+        jPanel1.add(Klucz_deszyfrowanie, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 80, 30));
 
         Wczytaj_plik1.setText("Wczytaj plik");
         Wczytaj_plik1.setBorder(null);
@@ -185,7 +189,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Wczytaj_plik1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Wczytaj_plik1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 160, 20));
+        jPanel1.add(Wczytaj_plik1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, 170, 30));
 
         Powrot_menu.setText("Wróć");
         Powrot_menu.setBorder(null);
@@ -194,7 +198,39 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Powrot_menuMouseClicked(evt);
             }
         });
-        jPanel1.add(Powrot_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 170, 30));
+        jPanel1.add(Powrot_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 170, 30));
+
+        Wyswietl_imie.setBackground(new java.awt.Color(16, 16, 16));
+        Wyswietl_imie.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Wyswietl_imie.setForeground(new java.awt.Color(255, 255, 255));
+        Wyswietl_imie.setBorder(null);
+        Wyswietl_imie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Wyswietl_imieActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Wyswietl_imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 130, 40));
+
+        Wyswietl_nazwisko.setBackground(new java.awt.Color(16, 16, 16));
+        Wyswietl_nazwisko.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        Wyswietl_nazwisko.setForeground(new java.awt.Color(255, 255, 255));
+        Wyswietl_nazwisko.setBorder(null);
+        Wyswietl_nazwisko.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Wyswietl_nazwiskoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Wyswietl_nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 130, 40));
+
+        imie.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        imie.setForeground(new java.awt.Color(255, 255, 255));
+        imie.setText("Imie:");
+        jPanel1.add(imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 110, -1));
+
+        nazwisko.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        nazwisko.setForeground(new java.awt.Color(255, 255, 255));
+        nazwisko.setText("Nazwisko:");
+        jPanel1.add(nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 110, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 720, 410));
 
@@ -228,7 +264,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Odszyfruj_tekstMouseClicked
 
     private void Odszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Odszyfruj_tekstActionPerformed
-         String tekst = Tekst_zaszyfrowany.getText();
+         String tekst = Wyswietl_date_ur.getText();
          List<String> odszyfrowanyTekst = Arrays.asList(tekst.split(";"));
          List<String> nazwy = new ArrayList();
          int indexer = 0; 
@@ -309,7 +345,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
        
     
          String zaszyfrowany = tekst;
-         Tekst_zaszyfrowany.setText(zaszyfrowany);
+         Wyswietl_date_ur.setText(zaszyfrowany);
          JOptionPane.showMessageDialog(this, "Plik wczytany !");
     }//GEN-LAST:event_Wczytaj_plik1ActionPerformed
 
@@ -319,9 +355,9 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Powrot_menuMouseClicked
 
-    private void Tekst_zaszyfrowanyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tekst_zaszyfrowanyActionPerformed
+    private void Wyswietl_date_urActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wyswietl_date_urActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Tekst_zaszyfrowanyActionPerformed
+    }//GEN-LAST:event_Wyswietl_date_urActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
            try {
@@ -333,6 +369,14 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         }
             JOptionPane.showMessageDialog(this, "Deszyfrowanie zostalo zapisane do pliku !");
     }//GEN-LAST:event_SaveActionPerformed
+
+    private void Wyswietl_imieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wyswietl_imieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Wyswietl_imieActionPerformed
+
+    private void Wyswietl_nazwiskoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wyswietl_nazwiskoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Wyswietl_nazwiskoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,7 +414,6 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private javax.swing.JLabel Icon_exit;
     private javax.swing.JLabel Icon_minimize;
     private javax.swing.JButton Klucz_deszyfrowanie;
-    private javax.swing.JLabel Label1;
     private javax.swing.JLabel Label2;
     private javax.swing.JButton Odszyfruj_tekst;
     private javax.swing.JTextField Podaj_p;
@@ -378,11 +421,16 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private javax.swing.JButton Powrot_menu;
     private javax.swing.JButton Save;
     private javax.swing.JTextField Tekst_odszyfrowany;
-    private javax.swing.JTextField Tekst_zaszyfrowany;
     private javax.swing.JButton Wczytaj_plik1;
+    private javax.swing.JTextField Wyswietl_date_ur;
+    private javax.swing.JTextField Wyswietl_imie;
+    private javax.swing.JTextField Wyswietl_nazwisko;
+    private javax.swing.JLabel data_urodzenia;
+    private javax.swing.JLabel imie;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel nazwisko;
     private javax.swing.JLabel p;
     private javax.swing.JLabel q;
     // End of variables declaration//GEN-END:variables
