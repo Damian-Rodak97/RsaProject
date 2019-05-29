@@ -177,7 +177,9 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Powrot_menuMouseClicked
 
     private void Zaszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstActionPerformed
-        String tekst = Wprowadz_imie.getText();
+        String tekst1 = Wprowadz_imie.getText();
+        String tekst2 = Wprowadz_nazwisko1.getText();
+        String tekst3 = Wprowadz_date_ur.getText();
         String keypublic ="";
         File file1 = new File("D:/files/KluczJawny.txt");
         Scanner in1 = null;
@@ -189,14 +191,18 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         keypublic = in1.nextLine();
         List<String> kluczPrivate = Arrays.asList(keypublic.split(" "));
         List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        tekst = Aplikacja1.Szyfrowanie(tekst,intKluczPrivate.get(0),intKluczPrivate.get(1));
+        
+        tekst1 = Aplikacja1.Szyfrowanie(tekst1,intKluczPrivate.get(0),intKluczPrivate.get(1));
+        tekst2 = Aplikacja1.Szyfrowanie(tekst2,intKluczPrivate.get(0),intKluczPrivate.get(1));
+        tekst3 = Aplikacja1.Szyfrowanie(tekst3,intKluczPrivate.get(0),intKluczPrivate.get(1));
          try {
             PrintWriter zapis = new PrintWriter("D:/files/Zaszyfrowany.txt");
-            zapis.println(tekst+";");
+            zapis.println(tekst1+" "+tekst2+" "+tekst3);
         zapis.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
+         
             JOptionPane.showMessageDialog(this, "Szyfrowanie zostalo zapisane do pliku !");
 
     }//GEN-LAST:event_Zaszyfruj_tekstActionPerformed
