@@ -264,8 +264,10 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Odszyfruj_tekstMouseClicked
 
     private void Odszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Odszyfruj_tekstActionPerformed
-         String tekst = Wyswietl_date_ur.getText();
-         List<String> odszyfrowanyTekst = Arrays.asList(tekst.split(";"));
+         List<String> odszfrowanyTekst = new ArrayList();
+         odszfrowanyTekst.add(Wyswietl_imie.getText());
+         odszfrowanyTekst.add(Wyswietl_nazwisko.getText());
+         odszfrowanyTekst.add(Wyswietl_date_ur.getText());
          List<String> nazwy = new ArrayList();
          int indexer = 0; 
          nazwy.add("Imie: ");
@@ -282,8 +284,8 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
          keyprivate = in1.nextLine();
         List<String> kluczPrivate = Arrays.asList(keyprivate.split(" "));
         List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        tekst = "";
-        for(String x:odszyfrowanyTekst)
+        String tekst = "";
+        for(String x:odszfrowanyTekst)
         {
             tekst += " " + nazwy.get(indexer) + Aplikacja2.Deszyfrowanie(x,intKluczPrivate.get(0),intKluczPrivate.get(1));
             indexer++;
@@ -332,8 +334,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Wczytaj_plik1MouseClicked
 
     private void Wczytaj_plik1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wczytaj_plik1ActionPerformed
-             
-        String tekst ="";
+         String tekst ="";
          File file1 = new File("D:/files/Zaszyfrowany.txt");
          Scanner odczyt = null;
         try {
@@ -343,9 +344,10 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         }
          tekst = odczyt.nextLine();
        
-    
-         String zaszyfrowany = tekst;
-         Wyswietl_date_ur.setText(zaszyfrowany);
+         List<String> odszyfrowanyTekst = Arrays.asList(tekst.split(" "));
+         Wyswietl_imie.setText(odszyfrowanyTekst.get(0));
+         Wyswietl_nazwisko.setText(odszyfrowanyTekst.get(1));
+         Wyswietl_date_ur.setText(odszyfrowanyTekst.get(2));
          JOptionPane.showMessageDialog(this, "Plik wczytany !");
     }//GEN-LAST:event_Wczytaj_plik1ActionPerformed
 
