@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import static java.lang.String.format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -99,7 +100,7 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 510, -1));
 
-        Zaszyfruj_tekst.setText("Zaszyfruj");
+        Zaszyfruj_tekst.setText("Dodaj wpis");
         Zaszyfruj_tekst.setBorder(null);
         Zaszyfruj_tekst.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -198,11 +199,14 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }
     
     private void Zaszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstActionPerformed
-        String tekst1 = Wprowadz_imie.getText();
-        String tekst2 = Wprowadz_nazwisko1.getText();
-        String tekst3 = Wprowadz_date_ur.getText();
+        List<String> zaszyfrowanyTekst= new ArrayList();
+        List<String> Tekst= new ArrayList();
+        zaszyfrowanyTekst.add(Wprowadz_imie.getText()) ;
+        zaszyfrowanyTekst.add(Wprowadz_nazwisko1.getText());
+        zaszyfrowanyTekst.add(Wprowadz_date_ur.getText());
+        String newLine = System.getProperty("line.separator");
         
-        if  (isValidDate(tekst3) == true){
+        if  (isValidDate(zaszyfrowanyTekst.get(2)) == true){
         String keypublic ="";
         File file1 = new File("D:/files/KluczJawny.txt");
         Scanner in1 = null;
@@ -214,13 +218,10 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         keypublic = in1.nextLine();
         List<String> kluczPrivate = Arrays.asList(keypublic.split(" "));
         List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        
-        tekst1 = Aplikacja1.Szyfrowanie(tekst1,intKluczPrivate.get(0),intKluczPrivate.get(1));
-        tekst2 = Aplikacja1.Szyfrowanie(tekst2,intKluczPrivate.get(0),intKluczPrivate.get(1));
-        tekst3 = Aplikacja1.Szyfrowanie(tekst3,intKluczPrivate.get(0),intKluczPrivate.get(1));
-         try {
-            PrintWriter zapis = new PrintWriter("D:/files/Zaszyfrowany.txt");
-            zapis.println(tekst1+" "+tekst2+" "+tekst3);
+        for(String s:zaszyfrowanyTekst)Tekst.add(Aplikacja1.Szyfrowanie(s, intKluczPrivate.get(0),intKluczPrivate.get(1)));
+         try { 
+            PrintWriter zapis = new PrintWriter("D:/files/Wpis.txt");
+            for(String x:Tekst)zapis.write(x+ newLine);
         zapis.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
@@ -235,7 +236,7 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Zaszyfruj_tekstActionPerformed
 
     private void Zaszyfruj_tekstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstMouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_Zaszyfruj_tekstMouseClicked
 
     private void Wprowadz_imieInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_Wprowadz_imieInputMethodTextChanged
