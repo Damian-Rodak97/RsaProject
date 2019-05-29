@@ -38,7 +38,7 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         Zaszyfruj_tekst = new javax.swing.JButton();
         Powrot_menu = new javax.swing.JButton();
-        imie1 = new javax.swing.JLabel();
+        imie = new javax.swing.JLabel();
         nazwisko = new javax.swing.JLabel();
         Wprowadz_imie = new javax.swing.JTextField();
         Wprowadz_nazwisko1 = new javax.swing.JTextField();
@@ -108,7 +108,7 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Zaszyfruj_tekstActionPerformed(evt);
             }
         });
-        jPanel1.add(Zaszyfruj_tekst, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 160, 30));
+        jPanel1.add(Zaszyfruj_tekst, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 170, 30));
 
         Powrot_menu.setText("Wróć");
         Powrot_menu.setBorder(null);
@@ -117,12 +117,12 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Powrot_menuMouseClicked(evt);
             }
         });
-        jPanel1.add(Powrot_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 170, 30));
+        jPanel1.add(Powrot_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 170, 30));
 
-        imie1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        imie1.setForeground(new java.awt.Color(255, 255, 255));
-        imie1.setText("Imie:");
-        jPanel1.add(imie1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 110, -1));
+        imie.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        imie.setForeground(new java.awt.Color(255, 255, 255));
+        imie.setText("Imie:");
+        jPanel1.add(imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 110, -1));
 
         nazwisko.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         nazwisko.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,7 +143,7 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Wprowadź dane do pól");
+        jLabel1.setText("Wprowadź dane do poniższych pól:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 720, 410));
@@ -257,7 +257,7 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private javax.swing.JTextField Wprowadz_nazwisko1;
     private javax.swing.JButton Zaszyfruj_tekst;
     private javax.swing.JLabel data_ur;
-    private javax.swing.JLabel imie1;
+    private javax.swing.JLabel imie;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
