@@ -36,7 +36,6 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         data_ur = new javax.swing.JLabel();
         Wprowadz_date_ur = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        Send_File = new javax.swing.JButton();
         Zaszyfruj_tekst = new javax.swing.JButton();
         Powrot_menu = new javax.swing.JButton();
         imie1 = new javax.swing.JLabel();
@@ -96,20 +95,6 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 510, -1));
-
-        Send_File.setText("Zapisz do pliku");
-        Send_File.setBorder(null);
-        Send_File.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Send_FileMouseClicked(evt);
-            }
-        });
-        Send_File.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Send_FileActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Send_File, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 170, 30));
 
         Zaszyfruj_tekst.setText("Zaszyfruj");
         Zaszyfruj_tekst.setBorder(null);
@@ -185,29 +170,14 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         this.setState(Login.ICONIFIED);
     }//GEN-LAST:event_Icon_minimizeMouseClicked
 
-    private void Send_FileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Send_FileMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Send_FileMouseClicked
-
     private void Powrot_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Powrot_menuMouseClicked
         Choice powrot = new Choice();
         powrot.setVisible(true);
         dispose();
     }//GEN-LAST:event_Powrot_menuMouseClicked
 
-    private void Send_FileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Send_FileActionPerformed
-        try {
-            PrintWriter zapis = new PrintWriter("D:/files/Zaszyfrowany.txt");
-            zapis.println(Tekst_zaszyfrowany.getText());
-        zapis.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            JOptionPane.showMessageDialog(this, "Szyfrowanie zostalo zapisane do pliku !");
-    }//GEN-LAST:event_Send_FileActionPerformed
-
     private void Zaszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstActionPerformed
-        String tekst = Wprowadz_date_ur.getText();
+        String tekst = Wprowadz_imie.getText();
         String keypublic ="";
         File file1 = new File("D:/files/KluczJawny.txt");
         Scanner in1 = null;
@@ -220,7 +190,14 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         List<String> kluczPrivate = Arrays.asList(keypublic.split(" "));
         List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
         tekst = Aplikacja1.Szyfrowanie(tekst,intKluczPrivate.get(0),intKluczPrivate.get(1));
-        Tekst_zaszyfrowany.setText(tekst);
+         try {
+            PrintWriter zapis = new PrintWriter("D:/files/Zaszyfrowany.txt");
+            zapis.println(tekst+";");
+        zapis.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            JOptionPane.showMessageDialog(this, "Szyfrowanie zostalo zapisane do pliku !");
 
     }//GEN-LAST:event_Zaszyfruj_tekstActionPerformed
 
@@ -268,7 +245,6 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private javax.swing.JLabel Icon_exit;
     private javax.swing.JLabel Icon_minimize;
     private javax.swing.JButton Powrot_menu;
-    private javax.swing.JButton Send_File;
     private javax.swing.JLabel SzyfrowanieRSA_title;
     private javax.swing.JTextField Wprowadz_date_ur;
     private javax.swing.JTextField Wprowadz_imie;
