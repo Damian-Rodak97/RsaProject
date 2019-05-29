@@ -19,7 +19,6 @@ public class Aplikacja1 {
     return ZaszyfrowanyTekst;
 }
     public static void main(String[] args) {
-  
-        
+    
     } 
   }
