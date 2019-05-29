@@ -6,6 +6,9 @@ import Frame.Choice;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import static java.lang.String.format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -133,6 +136,13 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         Wprowadz_imie.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         Wprowadz_imie.setForeground(new java.awt.Color(255, 255, 255));
         Wprowadz_imie.setBorder(null);
+        Wprowadz_imie.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                Wprowadz_imieInputMethodTextChanged(evt);
+            }
+        });
         jPanel1.add(Wprowadz_imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 130, 40));
 
         Wprowadz_nazwisko1.setBackground(new java.awt.Color(16, 16, 16));
@@ -176,10 +186,23 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_Powrot_menuMouseClicked
 
+    public static boolean isValidDate(String inDate) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy"); ;
+        dateFormat.setLenient(false);
+        try {
+            dateFormat.parse(inDate.trim());
+        } catch (ParseException pe) {
+           return false;
+        }
+        return true;
+    }
+    
     private void Zaszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstActionPerformed
         String tekst1 = Wprowadz_imie.getText();
         String tekst2 = Wprowadz_nazwisko1.getText();
         String tekst3 = Wprowadz_date_ur.getText();
+        
+        if  (isValidDate(tekst3) == true){
         String keypublic ="";
         File file1 = new File("D:/files/KluczJawny.txt");
         Scanner in1 = null;
@@ -204,12 +227,20 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         }
          
             JOptionPane.showMessageDialog(this, "Szyfrowanie zostalo zapisane do pliku !");
-
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Zły format daty !");
+        }
     }//GEN-LAST:event_Zaszyfruj_tekstActionPerformed
 
     private void Zaszyfruj_tekstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_Zaszyfruj_tekstMouseClicked
+
+    private void Wprowadz_imieInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_Wprowadz_imieInputMethodTextChanged
+
+    }//GEN-LAST:event_Wprowadz_imieInputMethodTextChanged
 
     /**
      * @param args the command line arguments
