@@ -6,10 +6,13 @@ import static Frame.Aplikacja2.wyznacz_d;
 import static Frame.Aplikacja2.wyznacz_e;
 import javax.swing.JOptionPane;
 import Frame.Choice;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -330,6 +333,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
            int indeks = jScrollBar1.getValue();
+           if(zaszyfrowanyTekst.size() > indeks){
          String tekst = zaszyfrowanyTekst.get(indeks);
          List<String> odszyfrowanyTekst = new ArrayList();
          List<String> nazwy = new ArrayList();
@@ -349,6 +353,11 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         Wyswietl_imie.setText(odszyfrowanyTekst.get(0));
         Wyswietl_nazwisko.setText(odszyfrowanyTekst.get(1));
         Wyswietl_date_ur.setText(odszyfrowanyTekst.get(2));
+           }
+           else
+           {
+            JOptionPane.showMessageDialog(this, "Brak wpisu !");
+           }
     }//GEN-LAST:event_Wczytaj_plik1ActionPerformed
 
     private void Powrot_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Powrot_menuMouseClicked
@@ -362,13 +371,19 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Wyswietl_date_urActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-           try {
-            PrintWriter zapis = new PrintWriter("D:/files/WpisOdszyfrowany.txt");
-       //     zapis.println(Tekst_odszyfrowany.getText());
-        zapis.close();
-        } catch (FileNotFoundException ex) {
+         String tekst = Wyswietl_imie.getText()+" "+Wyswietl_nazwisko.getText()+" "+Wyswietl_date_ur.getText();
+         Writer output;
+         File WpisDoPliu = new File("D:/files/WpisDoPliku.txt");
+         String newLine = System.getProperty("line.separator");
+      
+        try {
+            output = new BufferedWriter(new FileWriter(WpisDoPliu, true));
+            output.append(tekst);
+            output.append(newLine);
+            output.close();
+        } catch (IOException ex) {
             Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
             JOptionPane.showMessageDialog(this, "Deszyfrowanie zostalo zapisane do pliku !");
     }//GEN-LAST:event_SaveActionPerformed
 
