@@ -65,6 +65,7 @@ public static int wyznacz_d(int e, int phi)
   }
   for(int x:tab)
   {
+      x=x-1;
       Zdeszyfrowny += (char)x;
   }
   return Zdeszyfrowny;
