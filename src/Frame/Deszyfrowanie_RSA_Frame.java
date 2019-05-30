@@ -103,17 +103,17 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         Tekst_odszyfrowany.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         Tekst_odszyfrowany.setForeground(new java.awt.Color(255, 255, 255));
         Tekst_odszyfrowany.setBorder(null);
-        jPanel1.add(Tekst_odszyfrowany, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 430, 50));
+        jPanel1.add(Tekst_odszyfrowany, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 430, 50));
 
         Label2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         Label2.setForeground(new java.awt.Color(255, 255, 255));
-        Label2.setText("Tekst odszyfrowany:");
-        jPanel1.add(Label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 110, -1));
+        Label2.setText("Wpis zaszyfrowany:");
+        jPanel1.add(Label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 110, -1));
 
         data_urodzenia.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         data_urodzenia.setForeground(new java.awt.Color(255, 255, 255));
         data_urodzenia.setText("Data urodzenia:");
-        jPanel1.add(data_urodzenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 100, 110, -1));
+        jPanel1.add(data_urodzenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, 110, -1));
 
         Wyswietl_date_ur.setBackground(new java.awt.Color(16, 16, 16));
         Wyswietl_date_ur.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -124,7 +124,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Wyswietl_date_urActionPerformed(evt);
             }
         });
-        jPanel1.add(Wyswietl_date_ur, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, 130, 40));
+        jPanel1.add(Wyswietl_date_ur, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 160, 40));
 
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 590, 10));
@@ -169,7 +169,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Odszyfruj_tekstActionPerformed(evt);
             }
         });
-        jPanel1.add(Odszyfruj_tekst, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 250, 140, 30));
+        jPanel1.add(Odszyfruj_tekst, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 140, 30));
 
         Klucz_deszyfrowanie.setText("Generuj klucz");
         Klucz_deszyfrowanie.setBorder(null);
@@ -217,7 +217,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Wyswietl_imieActionPerformed(evt);
             }
         });
-        jPanel1.add(Wyswietl_imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 130, 40));
+        jPanel1.add(Wyswietl_imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 160, 40));
 
         Wyswietl_nazwisko.setBackground(new java.awt.Color(16, 16, 16));
         Wyswietl_nazwisko.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -228,12 +228,12 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Wyswietl_nazwiskoActionPerformed(evt);
             }
         });
-        jPanel1.add(Wyswietl_nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 130, 40));
+        jPanel1.add(Wyswietl_nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, 160, 40));
 
         imie.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         imie.setForeground(new java.awt.Color(255, 255, 255));
         imie.setText("Imie:");
-        jPanel1.add(imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 110, -1));
+        jPanel1.add(imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 110, -1));
 
         Licznik.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
         Licznik.setAutoscrolls(true);
@@ -244,16 +244,16 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 LicznikStateChanged(evt);
             }
         });
-        jPanel1.add(Licznik, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 50, 40));
+        jPanel1.add(Licznik, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 50, 40));
 
         nazwisko.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         nazwisko.setForeground(new java.awt.Color(255, 255, 255));
         nazwisko.setText("Nazwisko:");
-        jPanel1.add(nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 110, -1));
+        jPanel1.add(nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 110, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Numer wpisu:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 80, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 80, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 720, 410));
 
@@ -287,15 +287,9 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Odszyfruj_tekstMouseClicked
 
     private void Odszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Odszyfruj_tekstActionPerformed
-         List<String> odszfrowanyTekst = new ArrayList();
-         odszfrowanyTekst.add(Wyswietl_imie.getText());
-         odszfrowanyTekst.add(Wyswietl_nazwisko.getText());
-         odszfrowanyTekst.add(Wyswietl_date_ur.getText());
+         String tekst = Tekst_odszyfrowany.getText();
+         List<String> odszyfrowanyTekst = new ArrayList();
          List<String> nazwy = new ArrayList();
-         int indexer = 0; 
-         nazwy.add("Imie: ");
-         nazwy.add("Nazwisko: ");
-         nazwy.add("Data urodzenia: ");
          String keyprivate ="";
          File file1 = new File("D:/files/KluczPrywatny.txt");
          Scanner in1 = null;
@@ -307,13 +301,11 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
          keyprivate = in1.nextLine();
         List<String> kluczPrivate = Arrays.asList(keyprivate.split(" "));
         List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        String tekst = "";
-        for(String x:odszfrowanyTekst)
-        {
-            tekst += " " + nazwy.get(indexer) + Aplikacja2.Deszyfrowanie(x,intKluczPrivate.get(0),intKluczPrivate.get(1));
-            indexer++;
-        }
-        Tekst_odszyfrowany.setText(tekst);
+        tekst = Aplikacja2.Deszyfrowanie(tekst, intKluczPrivate.get(0), intKluczPrivate.get(1));
+        odszyfrowanyTekst = Arrays.asList(tekst.split(";"));
+        Wyswietl_imie.setText(odszyfrowanyTekst.get(0));
+        Wyswietl_nazwisko.setText(odszyfrowanyTekst.get(1));
+        Wyswietl_date_ur.setText(odszyfrowanyTekst.get(2));
     }//GEN-LAST:event_Odszyfruj_tekstActionPerformed
 
     private void Klucz_deszyfrowanieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Klucz_deszyfrowanieMouseClicked
@@ -359,19 +351,16 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private void Wczytaj_plik1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wczytaj_plik1ActionPerformed
          String tekst ="";
          List<String> odszyfrowanyTekst = new ArrayList();
-       
-   try {
-			List<String> allLines = Files.readAllLines(Paths.get("D:/files/Wpis"+(int)Licznik.getValue()+".txt"));
-			for (String line : allLines) {
-				odszyfrowanyTekst.add(line);
+           try {
+	List<String> allLines = Files.readAllLines(Paths.get("D:/files/Wpis.txt"));
+		for (String line : allLines) {
+		odszyfrowanyTekst.add(line);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-       
-         Wyswietl_imie.setText(odszyfrowanyTekst.get(0));
-         Wyswietl_nazwisko.setText(odszyfrowanyTekst.get(1));
-         Wyswietl_date_ur.setText(odszyfrowanyTekst.get(2));
+           for(String x:odszyfrowanyTekst)tekst +=x;
+           Tekst_odszyfrowany.setText(tekst);
          JOptionPane.showMessageDialog(this, "Plik wczytany !");
     }//GEN-LAST:event_Wczytaj_plik1ActionPerformed
 
