@@ -201,10 +201,9 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private void Zaszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstActionPerformed
         List<String> zaszyfrowanyTekst= new ArrayList();
         List<String> Tekst= new ArrayList();
-        zaszyfrowanyTekst.add(Wprowadz_imie.getText()) ;
-        zaszyfrowanyTekst.add(Wprowadz_nazwisko1.getText());
-        zaszyfrowanyTekst.add(Wprowadz_date_ur.getText());
-        String newLine = System.getProperty("line.separator");
+        zaszyfrowanyTekst.add(Wprowadz_imie.getText()+";") ;
+        zaszyfrowanyTekst.add(Wprowadz_nazwisko1.getText()+";");
+        zaszyfrowanyTekst.add(Wprowadz_date_ur.getText()+";");
         
         if  (isValidDate(zaszyfrowanyTekst.get(2)) == true){
         String keypublic ="";
@@ -221,7 +220,7 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         for(String s:zaszyfrowanyTekst)Tekst.add(Aplikacja1.Szyfrowanie(s, intKluczPrivate.get(0),intKluczPrivate.get(1)));
          try { 
             PrintWriter zapis = new PrintWriter("D:/files/Wpis.txt");
-            for(String x:Tekst)zapis.write(x+ newLine);
+            for(String x:Tekst)zapis.write(x);
         zapis.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
