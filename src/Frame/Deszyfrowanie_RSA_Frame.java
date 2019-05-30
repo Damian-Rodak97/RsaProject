@@ -185,7 +185,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         });
         jPanel1.add(Klucz_deszyfrowanie, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 80, 30));
 
-        Wczytaj_plik1.setText("Wczytaj wpis");
+        Wczytaj_plik1.setText("Wczytaj wpisy");
         Wczytaj_plik1.setBorder(null);
         Wczytaj_plik1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -197,7 +197,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Wczytaj_plik1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Wczytaj_plik1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 70, 50));
+        jPanel1.add(Wczytaj_plik1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 90, 50));
 
         Powrot_menu.setText("Wróć");
         Powrot_menu.setBorder(null);
