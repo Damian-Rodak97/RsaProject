@@ -58,9 +58,9 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         Wyswietl_imie = new javax.swing.JTextField();
         Wyswietl_nazwisko = new javax.swing.JTextField();
         imie = new javax.swing.JLabel();
-        Licznik = new javax.swing.JSpinner();
         nazwisko = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollBar1 = new javax.swing.JScrollBar();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,12 +103,12 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         Tekst_odszyfrowany.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         Tekst_odszyfrowany.setForeground(new java.awt.Color(255, 255, 255));
         Tekst_odszyfrowany.setBorder(null);
-        jPanel1.add(Tekst_odszyfrowany, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 430, 50));
+        jPanel1.add(Tekst_odszyfrowany, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 430, 50));
 
         Label2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         Label2.setForeground(new java.awt.Color(255, 255, 255));
         Label2.setText("Wpis zaszyfrowany:");
-        jPanel1.add(Label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 110, -1));
+        jPanel1.add(Label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 110, -1));
 
         data_urodzenia.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         data_urodzenia.setForeground(new java.awt.Color(255, 255, 255));
@@ -197,7 +197,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 Wczytaj_plik1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Wczytaj_plik1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 130, 90, 30));
+        jPanel1.add(Wczytaj_plik1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 70, 50));
 
         Powrot_menu.setText("Wróć");
         Powrot_menu.setBorder(null);
@@ -235,25 +235,15 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         imie.setText("Imie:");
         jPanel1.add(imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 110, -1));
 
-        Licznik.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
-        Licznik.setAutoscrolls(true);
-        Licznik.setBorder(null);
-        Licznik.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Licznik.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                LicznikStateChanged(evt);
-            }
-        });
-        jPanel1.add(Licznik, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 50, 40));
-
         nazwisko.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         nazwisko.setForeground(new java.awt.Color(255, 255, 255));
         nazwisko.setText("Nazwisko:");
         jPanel1.add(nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 110, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Numer wpisu:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 80, -1));
+        jLabel2.setText("Przejście po wpisach:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 110, -1));
+        jPanel1.add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 60, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 720, 410));
 
@@ -393,10 +383,6 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Wyswietl_nazwiskoActionPerformed
 
-    private void LicznikStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_LicznikStateChanged
- 
-    }//GEN-LAST:event_LicznikStateChanged
-
     /**
      * @param args the command line arguments
      */
@@ -433,7 +419,6 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private javax.swing.JLabel Icon_minimize;
     private javax.swing.JButton Klucz_deszyfrowanie;
     private javax.swing.JLabel Label2;
-    private javax.swing.JSpinner Licznik;
     private javax.swing.JButton Odszyfruj_tekst;
     private javax.swing.JTextField Podaj_p;
     private javax.swing.JTextField Podaj_q;
@@ -449,6 +434,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nazwisko;
     private javax.swing.JLabel p;
