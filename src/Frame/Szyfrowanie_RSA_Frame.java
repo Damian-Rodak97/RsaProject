@@ -1,12 +1,16 @@
 package Frame;
 
 import javax.swing.JOptionPane;
-import java.math.BigInteger;
-import Frame.Choice;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import static java.lang.String.format;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -200,14 +204,17 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     
     private void Zaszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstActionPerformed
         List<String> zaszyfrowanyTekst= new ArrayList();
-        List<String> Tekst= new ArrayList();
+        String Tekst= "";
         zaszyfrowanyTekst.add(Wprowadz_imie.getText()+";") ;
         zaszyfrowanyTekst.add(Wprowadz_nazwisko1.getText()+";");
         zaszyfrowanyTekst.add(Wprowadz_date_ur.getText()+";");
+        String newLine = System.getProperty("line.separator");
         
         if  (isValidDate(zaszyfrowanyTekst.get(2)) == true){
         String keypublic ="";
         File file1 = new File("D:/files/KluczJawny.txt");
+        File file2 = new File("D:/files/Wpis.txt");
+        List<String> zapis= new ArrayList();
         Scanner in1 = null;
         try {
             in1 = new Scanner(file1);
@@ -217,14 +224,18 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         keypublic = in1.nextLine();
         List<String> kluczPrivate = Arrays.asList(keypublic.split(" "));
         List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        for(String s:zaszyfrowanyTekst)Tekst.add(Aplikacja1.Szyfrowanie(s, intKluczPrivate.get(0),intKluczPrivate.get(1)));
-         try { 
-            PrintWriter zapis = new PrintWriter("D:/files/Wpis.txt");
-            for(String x:Tekst)zapis.write(x);
-        zapis.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        for(String s:zaszyfrowanyTekst)Tekst += Aplikacja1.Szyfrowanie(s, intKluczPrivate.get(0),intKluczPrivate.get(1));
+     
+                Writer output;
+            try {
+                output = new BufferedWriter(new FileWriter(file2, true));
+                output.append(Tekst);
+                output.append(newLine);
+                output.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Szyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
          
             JOptionPane.showMessageDialog(this, "Szyfrowanie zostalo zapisane do pliku !");
         }

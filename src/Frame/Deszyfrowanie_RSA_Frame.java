@@ -344,7 +344,6 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Wczytaj_plik1MouseClicked
 
     private void Wczytaj_plik1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wczytaj_plik1ActionPerformed
-         String tekst ="";
          List<String> odszyfrowanyTekst = new ArrayList();
            try {
 	List<String> allLines = Files.readAllLines(Paths.get("D:/files/Wpis.txt"));
@@ -354,8 +353,8 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-           for(String x:odszyfrowanyTekst)tekst +=x;
-           Tekst_odszyfrowany.setText(tekst);
+           int indeks = jScrollBar1.getValue();
+           Tekst_odszyfrowany.setText(odszyfrowanyTekst.get(indeks));
          JOptionPane.showMessageDialog(this, "Plik wczytany !");
     }//GEN-LAST:event_Wczytaj_plik1ActionPerformed
 
