@@ -287,6 +287,8 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Klucz_deszyfrowanieMouseClicked
 
     private void Klucz_deszyfrowanieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Klucz_deszyfrowanieActionPerformed
+    File starting = new File(System.getProperty("user.dir"));
+    String Path = starting.toString();
     int q = Integer.parseInt(Podaj_q.getText());
     int p = Integer.parseInt(Podaj_p.getText());
     if(Aplikacja2.CzyPierwsza(p) == true && Aplikacja2.CzyPierwsza(q)){
@@ -297,14 +299,14 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     String Key_Private = n + " " + d ;
     String Key_Public = n + " " + e ;
         try {
-            PrintWriter zapis = new PrintWriter("D:/files/KluczJawny.txt");
+            PrintWriter zapis = new PrintWriter(Path+"KluczJawny.txt");
             zapis.println(Key_Public);
             zapis.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            PrintWriter zapis2 = new PrintWriter("D:/files/KluczPrywatny.txt");
+            PrintWriter zapis2 = new PrintWriter(Path+"KluczPrywatny.txt");
             zapis2.println(Key_Private);
             zapis2.close();
         } catch (FileNotFoundException ex) {
@@ -324,8 +326,10 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
     private void Wczytaj_plik1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wczytaj_plik1ActionPerformed
          List<String> zaszyfrowanyTekst = new ArrayList();
+         File starting = new File(System.getProperty("user.dir"));
+         String path= starting.toString();
            try {
-	List<String> allLines = Files.readAllLines(Paths.get("D:/files/Wpis.txt"));
+	List<String> allLines = Files.readAllLines(Paths.get(path+"Wpis.txt"));
 		for (String line : allLines) {
 		zaszyfrowanyTekst.add(line);
 			}
@@ -338,7 +342,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
          List<String> odszyfrowanyTekst = new ArrayList();
          List<String> nazwy = new ArrayList();
          String keyprivate ="";
-         File file1 = new File("D:/files/KluczPrywatny.txt");
+         File file1 = new File(path+"KluczPrywatny.txt");
          Scanner in1 = null;
         try {
             in1 = new Scanner(file1);
@@ -373,7 +377,9 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
          String tekst = Wyswietl_imie.getText()+" "+Wyswietl_nazwisko.getText()+" "+Wyswietl_date_ur.getText();
          Writer output;
-         File WpisDoPliu = new File("D:/files/WpisDoPliku.txt");
+         File starting = new File(System.getProperty("user.dir"));
+         String path =starting.toString();
+         File WpisDoPliu = new File(path+"WpisDoPliku.txt");
          String newLine = System.getProperty("line.separator");
       
         try {
