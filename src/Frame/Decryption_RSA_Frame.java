@@ -1,11 +1,6 @@
 package Frame;
 
-import static Frame.Aplikacja2.Deszyfrowanie;
-import static Frame.Aplikacja2.sitoEratostenesa;
-import static Frame.Aplikacja2.wyznacz_d;
-import static Frame.Aplikacja2.wyznacz_e;
 import javax.swing.JOptionPane;
-import Frame.Choice;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,15 +13,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import static Frame.DecryptionService.get_e;
+import static Frame.DecryptionService.get_d;
 
-public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
+public class Decryption_RSA_Frame extends javax.swing.JFrame {
 
-    public Deszyfrowanie_RSA_Frame() {
+    public Decryption_RSA_Frame() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -101,12 +97,10 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         DeszyfrowanieRSA_title.setText("Deszyfrowanie RSA");
         jPanel1.add(DeszyfrowanieRSA_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
-        Label2.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         Label2.setForeground(new java.awt.Color(255, 255, 255));
         Label2.setText("Lp:");
         jPanel1.add(Label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 20, -1));
 
-        data_urodzenia.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         data_urodzenia.setForeground(new java.awt.Color(255, 255, 255));
         data_urodzenia.setText("Data urodzenia:");
         jPanel1.add(data_urodzenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 110, -1));
@@ -221,12 +215,10 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
         });
         jPanel1.add(Wyswietl_nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 180, 40));
 
-        imie.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         imie.setForeground(new java.awt.Color(255, 255, 255));
         imie.setText("Imie:");
         jPanel1.add(imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 110, -1));
 
-        nazwisko.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         nazwisko.setForeground(new java.awt.Color(255, 255, 255));
         nazwisko.setText("Nazwisko:");
         jPanel1.add(nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 110, -1));
@@ -268,7 +260,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
     private void Icon_exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Icon_exitMouseClicked
         int dialogButton = JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Exit", dialogButton);
+        int result = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz wyjść?", "Wyjście", dialogButton);
         if (result == 0) {
             System.exit(0);
         }
@@ -287,37 +279,34 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Klucz_deszyfrowanieMouseClicked
 
     private void Klucz_deszyfrowanieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Klucz_deszyfrowanieActionPerformed
-    File starting = new File(System.getProperty("user.dir"));
-    String Path = starting.toString();
-    int q = Integer.parseInt(Podaj_q.getText());
-    int p = Integer.parseInt(Podaj_p.getText());
-    if(Aplikacja2.CzyPierwsza(p) == true && Aplikacja2.CzyPierwsza(q)){
-    int n= p*q;
-    int phi = (p-1) * (q -1);
-    int e = wyznacz_e(phi,n);
-    int d = wyznacz_d(e,phi);
-    String Key_Private = n + " " + d ;
-    String Key_Public = n + " " + e ;
-        try {
-            PrintWriter zapis = new PrintWriter(Path+"KluczJawny.txt");
-            zapis.println(Key_Public);
-            zapis.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+        String path = System.getProperty("user.home") + "\\Desktop\\";
+        int q = Integer.parseInt(Podaj_q.getText());
+        int p = Integer.parseInt(Podaj_p.getText());
+        if (DecryptionService.IsPrime(p) == true && DecryptionService.IsPrime(q)) {
+            int n = p * q;
+            int phi = (p - 1) * (q - 1);
+            int e = get_e(phi, n);
+            int d = get_d(e, phi);
+            String Key_Private = n + " " + d;
+            String Key_Public = n + " " + e;
+            try {
+                PrintWriter savePublicKey = new PrintWriter(path + "PublicKey.txt");
+                savePublicKey.println(Key_Public);
+                savePublicKey.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Decryption_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                PrintWriter savePrivateKey = new PrintWriter(path + "PrivateKey.txt");
+                savePrivateKey.println(Key_Private);
+                savePrivateKey.close();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Decryption_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(this, "Klucze zostały wygenerowane!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Liczby nie są pierwsze!");
         }
-        try {
-            PrintWriter zapis2 = new PrintWriter(Path+"KluczPrywatny.txt");
-            zapis2.println(Key_Private);
-            zapis2.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        JOptionPane.showMessageDialog(this, "Klucze zostały wygenerowane !");
-        }
-    else
-    {
-          JOptionPane.showMessageDialog(this, "Liczby nie są pierwsze !");
-    }
     }//GEN-LAST:event_Klucz_deszyfrowanieActionPerformed
 
     private void Wczytaj_plik1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Wczytaj_plik1MouseClicked
@@ -325,43 +314,40 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Wczytaj_plik1MouseClicked
 
     private void Wczytaj_plik1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wczytaj_plik1ActionPerformed
-         List<String> zaszyfrowanyTekst = new ArrayList();
-         File starting = new File(System.getProperty("user.dir"));
-         String path= starting.toString();
-           try {
-	List<String> allLines = Files.readAllLines(Paths.get(path+"Wpis.txt"));
-		for (String line : allLines) {
-		zaszyfrowanyTekst.add(line);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-           int indeks = jScrollBar1.getValue();
-           if(zaszyfrowanyTekst.size() > indeks){
-         String tekst = zaszyfrowanyTekst.get(indeks);
-         List<String> odszyfrowanyTekst = new ArrayList();
-         List<String> nazwy = new ArrayList();
-         String keyprivate ="";
-         File file1 = new File(path+"KluczPrywatny.txt");
-         Scanner in1 = null;
+        List<String> EncryptedText = new ArrayList();
+        String path = System.getProperty("user.home") + "\\Desktop\\";
         try {
-            in1 = new Scanner(file1);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+            List<String> allLines = Files.readAllLines(Paths.get(path + "EncryptedText.txt"));
+            for (String line : allLines) {
+                EncryptedText.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-         keyprivate = in1.nextLine();
-        List<String> kluczPrivate = Arrays.asList(keyprivate.split(" "));
-        List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        tekst = Aplikacja2.Deszyfrowanie(tekst, intKluczPrivate.get(0), intKluczPrivate.get(1));
-        odszyfrowanyTekst = Arrays.asList(tekst.split(";"));
-        Wyswietl_imie.setText(odszyfrowanyTekst.get(0));
-        Wyswietl_nazwisko.setText(odszyfrowanyTekst.get(1));
-        Wyswietl_date_ur.setText(odszyfrowanyTekst.get(2));
-           }
-           else
-           {
-            JOptionPane.showMessageDialog(this, "Brak wpisu !");
-           }
+        int index = jScrollBar1.getValue();
+        if (EncryptedText.size() > index) {
+            String text = EncryptedText.get(index);
+            List<String> DecryptedText = new ArrayList();
+            List<String> nazwy = new ArrayList();
+            String keyPrivate = "";
+            File file1 = new File(path + "PrivateKey.txt");
+            Scanner in1 = null;
+            try {
+                in1 = new Scanner(file1);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Decryption_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            keyPrivate = in1.nextLine();
+            List<String> listKeyPrivate = Arrays.asList(keyPrivate.split(" "));
+            List<Integer> intKeyPrivate = listKeyPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+            text = DecryptionService.Decryption(text, intKeyPrivate.get(0), intKeyPrivate.get(1));
+            DecryptedText = Arrays.asList(text.split(";"));
+            Wyswietl_imie.setText(DecryptedText.get(0));
+            Wyswietl_nazwisko.setText(DecryptedText.get(1));
+            Wyswietl_date_ur.setText(DecryptedText.get(2));
+        } else {
+            JOptionPane.showMessageDialog(this, "Brak wpisu!");
+        }
     }//GEN-LAST:event_Wczytaj_plik1ActionPerformed
 
     private void Powrot_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Powrot_menuMouseClicked
@@ -375,22 +361,21 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Wyswietl_date_urActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-         String tekst = Wyswietl_imie.getText()+" "+Wyswietl_nazwisko.getText()+" "+Wyswietl_date_ur.getText();
-         Writer output;
-         File starting = new File(System.getProperty("user.dir"));
-         String path =starting.toString();
-         File WpisDoPliu = new File(path+"WpisDoPliku.txt");
-         String newLine = System.getProperty("line.separator");
-      
+        String text = Wyswietl_imie.getText() + " " + Wyswietl_nazwisko.getText() + " " + Wyswietl_date_ur.getText();
+        Writer output;
+        String path = System.getProperty("user.home") + "/Desktop";
+        File DecryptedTextFile = new File(path + "DecryptedText.txt");
+        String newLine = System.getProperty("line.separator");
+
         try {
-            output = new BufferedWriter(new FileWriter(WpisDoPliu, true));
-            output.append(tekst);
+            output = new BufferedWriter(new FileWriter(DecryptedTextFile, true));
+            output.append(text);
             output.append(newLine);
             output.close();
         } catch (IOException ex) {
-            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-            JOptionPane.showMessageDialog(this, "Deszyfrowanie zostalo zapisane do pliku !");
+            Logger.getLogger(Decryption_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        JOptionPane.showMessageDialog(this, "Deszyfrowanie zostalo zapisane do pliku!");
     }//GEN-LAST:event_SaveActionPerformed
 
     private void Wyswietl_imieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wyswietl_imieActionPerformed
@@ -406,7 +391,7 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_Powrot_menuActionPerformed
 
     private void LpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LpActionPerformed
-  
+
     }//GEN-LAST:event_LpActionPerformed
 
     private void jScrollBar1AdjustmentValueChanged(java.awt.event.AdjustmentEvent evt) {//GEN-FIRST:event_jScrollBar1AdjustmentValueChanged
@@ -425,20 +410,21 @@ public class Deszyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Decryption_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Decryption_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Decryption_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Decryption_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Deszyfrowanie_RSA_Frame().setVisible(true);
+                new Decryption_RSA_Frame().setVisible(true);
             }
         });
     }

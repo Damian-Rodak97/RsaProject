@@ -34,7 +34,6 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 204));
-        setMaximumSize(new java.awt.Dimension(1180, 690));
         setMinimumSize(new java.awt.Dimension(1180, 690));
         setUndecorated(true);
         setSize(new java.awt.Dimension(1180, 690));
@@ -81,12 +80,12 @@ public class Login extends javax.swing.JFrame {
 
         Password.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         Password.setForeground(new java.awt.Color(255, 255, 255));
-        Password.setText("Password");
+        Password.setText("Haslo");
         jPanel1.add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 90, 20));
 
         Username.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         Username.setForeground(new java.awt.Color(255, 255, 255));
-        Username.setText("Username");
+        Username.setText("Nazwa uzytkownika");
         jPanel1.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 90, 20));
 
         Password_field.setBackground(new java.awt.Color(16, 16, 16));
@@ -107,11 +106,10 @@ public class Login extends javax.swing.JFrame {
 
         LOGIN.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         LOGIN.setForeground(new java.awt.Color(255, 255, 255));
-        LOGIN.setText("LOGIN");
+        LOGIN.setText("Logowanie");
         jPanel1.add(LOGIN, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, -1, -1));
 
         Button_login.setBackground(new java.awt.Color(79, 54, 105));
-        Button_login.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         Button_login.setText("Sign in");
         Button_login.setBorder(null);
         Button_login.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -143,7 +141,7 @@ public class Login extends javax.swing.JFrame {
 
     private void Icon_exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Icon_exitMouseClicked
         int dialogButton = JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Exit", dialogButton);
+        int result = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz wyjść?", "Wyjście", dialogButton);
         if (result == 0) {
             System.exit(0);
         }
@@ -161,7 +159,7 @@ public class Login extends javax.swing.JFrame {
         String username = Username_field.getText();
         String password = Password_field.getText();
         
-        if((username.contains("Kari") && (password.contains("testowe")))) {
+        if((username.contains("test") && (password.contains("test")))) {
             Username_field.setText(null);
             Password_field.setText(null);
             systemExit();

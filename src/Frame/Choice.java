@@ -1,7 +1,7 @@
 package Frame;
 
-import Frame.Szyfrowanie_RSA_Frame;
-import Frame.Deszyfrowanie_RSA_Frame;
+import Frame.Encrypt_RSA_Frame;
+import Frame.Decryption_RSA_Frame;
 import javax.swing.JOptionPane;
 
 public class Choice extends javax.swing.JFrame {
@@ -54,7 +54,7 @@ public class Choice extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 210, 50));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 91, 220, 10));
 
-        Szyfrowanie.setText("Szyfrowanie RSA (Aplikacja 1)");
+        Szyfrowanie.setText("Szyfrowanie RSA");
         Szyfrowanie.setBorder(null);
         Szyfrowanie.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -63,7 +63,7 @@ public class Choice extends javax.swing.JFrame {
         });
         jPanel1.add(Szyfrowanie, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 153, 252, 40));
 
-        Deszyfrowanie.setText("Deszyfrowanie RSA (Aplikacja 2)");
+        Deszyfrowanie.setText("Deszyfrowanie RSA/Generowanie klucza");
         Deszyfrowanie.setBorder(null);
         Deszyfrowanie.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -119,20 +119,20 @@ public class Choice extends javax.swing.JFrame {
     }//GEN-LAST:event_Icon_minimize1MouseClicked
 
     private void SzyfrowanieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SzyfrowanieMouseClicked
-        Szyfrowanie_RSA_Frame szyfrowanieRSA = new Szyfrowanie_RSA_Frame();
+        Encrypt_RSA_Frame szyfrowanieRSA = new Encrypt_RSA_Frame();
         szyfrowanieRSA.setVisible(true);
         dispose();
     }//GEN-LAST:event_SzyfrowanieMouseClicked
 
     private void DeszyfrowanieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeszyfrowanieMouseClicked
-        Deszyfrowanie_RSA_Frame deszyfrowanieRSA = new Deszyfrowanie_RSA_Frame();
+        Decryption_RSA_Frame deszyfrowanieRSA = new Decryption_RSA_Frame();
         deszyfrowanieRSA.setVisible(true);
         dispose();
     }//GEN-LAST:event_DeszyfrowanieMouseClicked
 
     private void Icon_exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Icon_exitMouseClicked
         int dialogButton = JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Exit", dialogButton);
+        int result = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz wyjść?", "Wyjście", dialogButton);
         if (result == 0) {
             System.exit(0);
         }

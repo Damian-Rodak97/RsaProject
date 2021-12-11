@@ -89,7 +89,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="Szyfrowanie">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Szyfrowanie RSA (Aplikacja 1)"/>
+            <Property name="text" type="java.lang.String" value="Szyfrowanie RSA"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
@@ -105,7 +105,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="Deszyfrowanie">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Deszyfrowanie RSA (Aplikacja 2)"/>
+            <Property name="text" type="java.lang.String" value="Deszyfrowanie RSA/Generowanie klucza"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

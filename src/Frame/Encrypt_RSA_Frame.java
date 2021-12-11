@@ -1,16 +1,12 @@
 package Frame;
 
 import javax.swing.JOptionPane;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.StandardOpenOption;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,9 +17,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
+public class Encrypt_RSA_Frame extends javax.swing.JFrame {
 
-    public Szyfrowanie_RSA_Frame() {
+    public Encrypt_RSA_Frame() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -90,15 +86,19 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         SzyfrowanieRSA_title.setText("Szyfrowanie RSA");
         jPanel1.add(SzyfrowanieRSA_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
-        data_ur.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         data_ur.setForeground(new java.awt.Color(255, 255, 255));
-        data_ur.setText("Data urodzenia:");
-        jPanel1.add(data_ur, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 110, -1));
+        data_ur.setText("Data urodzenia (DD.MM.YYYY):");
+        jPanel1.add(data_ur, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 170, -1));
 
         Wprowadz_date_ur.setBackground(new java.awt.Color(16, 16, 16));
         Wprowadz_date_ur.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         Wprowadz_date_ur.setForeground(new java.awt.Color(255, 255, 255));
         Wprowadz_date_ur.setBorder(null);
+        Wprowadz_date_ur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Wprowadz_date_urActionPerformed(evt);
+            }
+        });
         jPanel1.add(Wprowadz_date_ur, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 140, 40));
 
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
@@ -127,12 +127,10 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
         });
         jPanel1.add(Powrot_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 170, 30));
 
-        imie.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         imie.setForeground(new java.awt.Color(255, 255, 255));
         imie.setText("Imie:");
         jPanel1.add(imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 110, -1));
 
-        nazwisko.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         nazwisko.setForeground(new java.awt.Color(255, 255, 255));
         nazwisko.setText("Nazwisko:");
         jPanel1.add(nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 110, -1));
@@ -175,7 +173,7 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
 
     private void Icon_exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Icon_exitMouseClicked
         int dialogButton = JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Exit", dialogButton);
+        int result = JOptionPane.showConfirmDialog(null, "Czy na pewno chcesz wyjść?", "Wyjście", dialogButton);
         if (result == 0) {
             System.exit(0);
         }
@@ -203,45 +201,46 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     }
     
     private void Zaszyfruj_tekstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Zaszyfruj_tekstActionPerformed
-        List<String> zaszyfrowanyTekst= new ArrayList();
-        String Tekst= "";
-        zaszyfrowanyTekst.add(Wprowadz_imie.getText()+";") ;
-        zaszyfrowanyTekst.add(Wprowadz_nazwisko1.getText()+";");
-        zaszyfrowanyTekst.add(Wprowadz_date_ur.getText()+";");
+        List<String> encryptedText= new ArrayList();
+        String Text= "";
+        encryptedText.add(Wprowadz_imie.getText()+";") ;
+        encryptedText.add(Wprowadz_nazwisko1.getText()+";");
+        encryptedText.add(Wprowadz_date_ur.getText()+";");
         String newLine = System.getProperty("line.separator");
         
-        if  (isValidDate(zaszyfrowanyTekst.get(2)) == true){
-        String keypublic ="";
-        File file1 = new File("D:/files/KluczJawny.txt");
-        File file2 = new File("D:/files/Wpis.txt");
+        if  (isValidDate(encryptedText.get(2)) == true){
+        String keyPublic ="";
+        String path = System.getProperty("user.home") + "/Desktop";
+        File file1 = new File(path + "/PublicKey.txt");
+        File file2 = new File(path + "/EncryptedText.txt");
         List<String> zapis= new ArrayList();
         Scanner in1 = null;
         try {
             in1 = new Scanner(file1);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Deszyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Decryption_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        keypublic = in1.nextLine();
-        List<String> kluczPrivate = Arrays.asList(keypublic.split(" "));
-        List <Integer> intKluczPrivate = kluczPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-        for(String s:zaszyfrowanyTekst)Tekst += Aplikacja1.Szyfrowanie(s, intKluczPrivate.get(0),intKluczPrivate.get(1));
+        keyPublic = in1.nextLine();
+        List<String> keyPrivate = Arrays.asList(keyPublic.split(" "));
+        List <Integer> intKeyPrivate = keyPrivate.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+        for(String s:encryptedText)Text += EncryptionService.Encryption(s, intKeyPrivate.get(0),intKeyPrivate.get(1));
      
                 Writer output;
             try {
                 output = new BufferedWriter(new FileWriter(file2, true));
-                output.append(Tekst);
+                output.append(Text);
                 output.append(newLine);
                 output.close();
             } catch (IOException ex) {
-                Logger.getLogger(Szyfrowanie_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Encrypt_RSA_Frame.class.getName()).log(Level.SEVERE, null, ex);
             }
 
          
-            JOptionPane.showMessageDialog(this, "Szyfrowanie zostalo zapisane do pliku !");
+            JOptionPane.showMessageDialog(this, "Szyfrowanie zostalo zapisane do pliku!");
         }
         else
         {
-            JOptionPane.showMessageDialog(this, "Zły format daty !");
+            JOptionPane.showMessageDialog(this, "Zły format daty!");
         }
     }//GEN-LAST:event_Zaszyfruj_tekstActionPerformed
 
@@ -252,6 +251,10 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
     private void Wprowadz_imieInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_Wprowadz_imieInputMethodTextChanged
 
     }//GEN-LAST:event_Wprowadz_imieInputMethodTextChanged
+
+    private void Wprowadz_date_urActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Wprowadz_date_urActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Wprowadz_date_urActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,20 +273,21 @@ public class Szyfrowanie_RSA_Frame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Szyfrowanie_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Encrypt_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Szyfrowanie_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Encrypt_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Szyfrowanie_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Encrypt_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Szyfrowanie_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Encrypt_RSA_Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Szyfrowanie_RSA_Frame().setVisible(true);
+                new Encrypt_RSA_Frame().setVisible(true);
             }
         });
     }
