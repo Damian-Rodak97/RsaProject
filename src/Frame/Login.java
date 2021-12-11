@@ -86,7 +86,7 @@ public class Login extends javax.swing.JFrame {
         Username.setFont(new java.awt.Font("Segoe UI Symbol", 0, 12)); // NOI18N
         Username.setForeground(new java.awt.Color(255, 255, 255));
         Username.setText("Nazwa uzytkownika");
-        jPanel1.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 90, 20));
+        jPanel1.add(Username, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 140, 20));
 
         Password_field.setBackground(new java.awt.Color(16, 16, 16));
         Password_field.setForeground(new java.awt.Color(255, 255, 255));
