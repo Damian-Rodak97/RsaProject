@@ -1,7 +1,5 @@
 package Frame;
 
-import Frame.Encrypt_RSA_Frame;
-import Frame.Decryption_RSA_Frame;
 import javax.swing.JOptionPane;
 
 public class Choice extends javax.swing.JFrame {
@@ -43,16 +41,17 @@ public class Choice extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setSize(new java.awt.Dimension(557, 592));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(27, 26, 26));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Wybierz opcję");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 50, 210, 50));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 91, 220, 10));
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(120, 50, 210, 50);
+        jPanel1.add(jSeparator1);
+        jSeparator1.setBounds(60, 91, 220, 10);
 
         Szyfrowanie.setText("Szyfrowanie RSA");
         Szyfrowanie.setBorder(null);
@@ -61,7 +60,8 @@ public class Choice extends javax.swing.JFrame {
                 SzyfrowanieMouseClicked(evt);
             }
         });
-        jPanel1.add(Szyfrowanie, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 153, 252, 40));
+        jPanel1.add(Szyfrowanie);
+        Szyfrowanie.setBounds(44, 153, 252, 40);
 
         Deszyfrowanie.setText("Deszyfrowanie RSA/Generowanie klucza");
         Deszyfrowanie.setBorder(null);
@@ -75,7 +75,8 @@ public class Choice extends javax.swing.JFrame {
                 DeszyfrowanieActionPerformed(evt);
             }
         });
-        jPanel1.add(Deszyfrowanie, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 226, 252, 37));
+        jPanel1.add(Deszyfrowanie);
+        Deszyfrowanie.setBounds(44, 226, 252, 37);
 
         Icon_exit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Icon_exit.setForeground(new java.awt.Color(255, 255, 255));
@@ -86,7 +87,8 @@ public class Choice extends javax.swing.JFrame {
                 Icon_exitMouseClicked(evt);
             }
         });
-        jPanel1.add(Icon_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 7, 10, 20));
+        jPanel1.add(Icon_exit);
+        Icon_exit.setBounds(320, 7, 10, 20);
 
         Icon_minimize.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Icon_minimize.setForeground(new java.awt.Color(255, 255, 255));
@@ -97,15 +99,30 @@ public class Choice extends javax.swing.JFrame {
                 Icon_minimizeMouseClicked(evt);
             }
         });
-        jPanel1.add(Icon_minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 10, 30));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 340, 370));
+        jPanel1.add(Icon_minimize);
+        Icon_minimize.setBounds(300, 0, 10, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/background_image.JPG"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(557, 592));
         jLabel1.setMinimumSize(new java.awt.Dimension(557, 592));
         jLabel1.setPreferredSize(new java.awt.Dimension(557, 592));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 557, 592));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

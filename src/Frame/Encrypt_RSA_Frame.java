@@ -54,10 +54,10 @@ public class Encrypt_RSA_Frame extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1180, 690));
         setUndecorated(true);
         setSize(new java.awt.Dimension(1180, 690));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(27, 26, 26));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         Icon_exit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Icon_exit.setForeground(new java.awt.Color(255, 255, 255));
@@ -68,7 +68,8 @@ public class Encrypt_RSA_Frame extends javax.swing.JFrame {
                 Icon_exitMouseClicked(evt);
             }
         });
-        jPanel1.add(Icon_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 20, 30));
+        jPanel1.add(Icon_exit);
+        Icon_exit.setBounds(700, 0, 20, 30);
 
         Icon_minimize.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         Icon_minimize.setForeground(new java.awt.Color(255, 255, 255));
@@ -79,16 +80,19 @@ public class Encrypt_RSA_Frame extends javax.swing.JFrame {
                 Icon_minimizeMouseClicked(evt);
             }
         });
-        jPanel1.add(Icon_minimize, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 0, 20, 30));
+        jPanel1.add(Icon_minimize);
+        Icon_minimize.setBounds(680, 0, 20, 30);
 
         SzyfrowanieRSA_title.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         SzyfrowanieRSA_title.setForeground(new java.awt.Color(255, 255, 255));
         SzyfrowanieRSA_title.setText("Szyfrowanie RSA");
-        jPanel1.add(SzyfrowanieRSA_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+        jPanel1.add(SzyfrowanieRSA_title);
+        SzyfrowanieRSA_title.setBounds(40, 40, 118, 22);
 
         data_ur.setForeground(new java.awt.Color(255, 255, 255));
         data_ur.setText("Data urodzenia (DD.MM.YYYY):");
-        jPanel1.add(data_ur, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 170, -1));
+        jPanel1.add(data_ur);
+        data_ur.setBounds(510, 150, 170, 16);
 
         Wprowadz_date_ur.setBackground(new java.awt.Color(16, 16, 16));
         Wprowadz_date_ur.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -99,10 +103,12 @@ public class Encrypt_RSA_Frame extends javax.swing.JFrame {
                 Wprowadz_date_urActionPerformed(evt);
             }
         });
-        jPanel1.add(Wprowadz_date_ur, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 140, 40));
+        jPanel1.add(Wprowadz_date_ur);
+        Wprowadz_date_ur.setBounds(510, 170, 140, 40);
 
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 8)); // NOI18N
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 510, -1));
+        jPanel1.add(jSeparator1);
+        jSeparator1.setBounds(90, 260, 510, 2);
 
         Zaszyfruj_tekst.setText("Dodaj wpis");
         Zaszyfruj_tekst.setBorder(null);
@@ -116,7 +122,8 @@ public class Encrypt_RSA_Frame extends javax.swing.JFrame {
                 Zaszyfruj_tekstActionPerformed(evt);
             }
         });
-        jPanel1.add(Zaszyfruj_tekst, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 170, 30));
+        jPanel1.add(Zaszyfruj_tekst);
+        Zaszyfruj_tekst.setBounds(390, 320, 170, 30);
 
         Powrot_menu.setText("Wróć");
         Powrot_menu.setBorder(null);
@@ -125,15 +132,18 @@ public class Encrypt_RSA_Frame extends javax.swing.JFrame {
                 Powrot_menuMouseClicked(evt);
             }
         });
-        jPanel1.add(Powrot_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 170, 30));
+        jPanel1.add(Powrot_menu);
+        Powrot_menu.setBounds(150, 320, 170, 30);
 
         imie.setForeground(new java.awt.Color(255, 255, 255));
         imie.setText("Imie:");
-        jPanel1.add(imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 110, -1));
+        jPanel1.add(imie);
+        imie.setBounds(70, 150, 110, 16);
 
         nazwisko.setForeground(new java.awt.Color(255, 255, 255));
         nazwisko.setText("Nazwisko:");
-        jPanel1.add(nazwisko, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 110, -1));
+        jPanel1.add(nazwisko);
+        nazwisko.setBounds(290, 150, 110, 16);
 
         Wprowadz_imie.setBackground(new java.awt.Color(16, 16, 16));
         Wprowadz_imie.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -146,26 +156,31 @@ public class Encrypt_RSA_Frame extends javax.swing.JFrame {
                 Wprowadz_imieInputMethodTextChanged(evt);
             }
         });
-        jPanel1.add(Wprowadz_imie, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 130, 40));
+        jPanel1.add(Wprowadz_imie);
+        Wprowadz_imie.setBounds(70, 170, 130, 40);
 
         Wprowadz_nazwisko1.setBackground(new java.awt.Color(16, 16, 16));
         Wprowadz_nazwisko1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         Wprowadz_nazwisko1.setForeground(new java.awt.Color(255, 255, 255));
         Wprowadz_nazwisko1.setBorder(null);
-        jPanel1.add(Wprowadz_nazwisko1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 130, 40));
+        jPanel1.add(Wprowadz_nazwisko1);
+        Wprowadz_nazwisko1.setBounds(290, 170, 130, 40);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Wprowadź dane do poniższych pól:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(40, 90, 215, 20);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 720, 410));
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(240, 140, 720, 410);
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Frame/background_image.JPG"))); // NOI18N
         Background.setMaximumSize(new java.awt.Dimension(1180, 690));
         Background.setMinimumSize(new java.awt.Dimension(1180, 690));
         Background.setPreferredSize(new java.awt.Dimension(1180, 690));
-        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 690));
+        getContentPane().add(Background);
+        Background.setBounds(0, 0, 1180, 690);
 
         pack();
         setLocationRelativeTo(null);
@@ -213,7 +228,7 @@ public class Encrypt_RSA_Frame extends javax.swing.JFrame {
         String path = System.getProperty("user.home") + "/Desktop";
         File file1 = new File(path + "/PublicKey.txt");
         File file2 = new File(path + "/EncryptedText.txt");
-        List<String> zapis= new ArrayList();
+        List<String> save= new ArrayList();
         Scanner in1 = null;
         try {
             in1 = new Scanner(file1);
