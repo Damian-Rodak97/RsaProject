@@ -387,7 +387,7 @@ public class Decryption_RSA_Frame extends javax.swing.JFrame {
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         String text = Wyswietl_imie.getText() + " " + Wyswietl_nazwisko.getText() + " " + Wyswietl_date_ur.getText();
         Writer output;
-        String path = System.getProperty("user.home") + "/Desktop";
+        String path = System.getProperty("user.home") + "\\Desktop\\";
         File DecryptedTextFile = new File(path + "DecryptedText.txt");
         String newLine = System.getProperty("line.separator");
 
